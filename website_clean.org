@@ -1,0 +1,12 @@
+#+STARTUP: showall
+#+STARTUP: latexpreview
+
+Working doc for jekyll-clean (dark) mod
+
+* TODO
+** TODO Figure out what mods I made to jekyll-clean to get what I have now
+- "__formless" in upper right
+- [ ] sidebar on right instead of original left
+- [ ] width configuration
+
+** TODO FIX width configuration
