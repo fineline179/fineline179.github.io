@@ -19,7 +19,6 @@ Here's a [link](https://www.google.com) to google.
 Here's some `verbatim code comment about an int x = 3`.
 
 
-
 ## Basic LaTeX
 Let's test some inline math, like the basic $$ y = a x^2 + b $$. (NB the
 alignment issues for $$ y = a x^2 + b $$ depending on browser zoom size..)
@@ -102,12 +101,12 @@ for i in range(10000):
             wins_b += 1
         else:
             wins_a += 1
-    
+
         if wins_a >= 4 or wins_b >= 4:
             break
     game_lengths.append(j + 1)
     continue
-        
+
 game_lengths = np.array(game_lengths)
 plt.hist(game_lengths)
 _ = plt.title('Game lengths under null hypothesis')
@@ -154,11 +153,10 @@ print game_lengths_historical.mean()
     5.80597014925
 
 
-In fact, the historical game distribution indicates that the playoffs are slightly shorter than expected by chance. Does that mean that historical games haven't been rigged? Well, for one thing, you have to think about might cause game lengths to be shorter: blowouts. If one team is way better than the other, you would expect the series to be shorter than 7. In fact, the simulation with p = .5 represents the most extreme scenario, where every final is between two teams of exactly equal ability. 
+In fact, the historical game distribution indicates that the playoffs are slightly shorter than expected by chance. Does that mean that historical games haven't been rigged? Well, for one thing, you have to think about might cause game lengths to be shorter: blowouts. If one team is way better than the other, you would expect the series to be shorter than 7. In fact, the simulation with p = .5 represents the most extreme scenario, where every final is between two teams of exactly equal ability.
 
 That is almost certainly never the case; consider the Boston Celtics winning streak of the 60's - they must have been much stronger than any other team! We can estimate the (implied) probability of winning from sports betting data. Sports betters have every incentive to produce calibrated predictions, because it directly impacts their bottom line.
 
 I looked at the moneylines from 2004 - 2015:
 
 http://www.oddsshark.com/nba/nba-finals-historical-series-odds-list
-
