@@ -3,17 +3,16 @@ body {
     background: #000;
     color: #eee;
 
-/* Platform native font stack
-*    font-family: 'Helvetica Neue', HelveticaNeue, 'TeX Gyre Heros',
-*    TeXGyreHeros, FreeSans, 'Nimbus Sans L', 'Liberation Sans',
-*    Arimo, Helvetica, Arial, sans-serif;
-*/
+    /* Platform native font stack */
+    /* font-family: 'Helvetica Neue', HelveticaNeue, 'TeX Gyre Heros', */
+    /* TeXGyreHeros, FreeSans, 'Nimbus Sans L', 'Liberation Sans', */
+    /* Arimo, Helvetica, Arial, sans-serif; */
 
-    /* purchashed font */
+    /* Purchashed font */
     font-family: nimbus-sans-round, sans-serif;
     font-weight: 500;
     font-style: normal;
-    /* END purchashed font */
+    font-size: 15px;
 
     padding-top: 60px;
     padding-bottom: 60px;
