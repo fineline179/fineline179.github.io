@@ -23,7 +23,7 @@ Here's some `verbatim code comment about an int x = 3`.
 Let's test some inline math, like the basic $$ y = a x^2 + b $$. (NB the
 alignment issues for $$ y = a x^2 + b $$ depending on browser zoom size..)
 
-Here is the same math in it's own line:
+Here is the same math in its own line:
 
 $$ y = a x^2 + b $$
 
