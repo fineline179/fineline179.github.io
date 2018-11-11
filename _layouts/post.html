@@ -1,6 +1,11 @@
 {% include header.html %}
 
 <div class="container container-left">
+  <div class="row hidden-lg hidden-md hidden-xs">
+    <div class="col-sm-12">
+      {% include sidebar.html %}
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-9">
       <div class="article">
@@ -37,7 +42,7 @@
         {% endif %}
       </div>
     </div>
-    <div class="col-md-3 hidden-xs">
+    <div class="col-md-3 hidden-sm hidden-xs">
       {% include sidebar.html %}
     </div>
   </div>
