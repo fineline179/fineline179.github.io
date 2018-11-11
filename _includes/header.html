@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<!-- load mathjax library -->
 <script type="text/javascript"
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -17,7 +18,7 @@
     <link href="{{ site.baseurl }}/css/syntax.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
     <link href="https://use.typekit.net/kkq6exu.css" rel="stylesheet" >
-    {% include isso-comments.html %}
+{% include isso-comments.html %}
 </head>
 
 <body>
@@ -32,19 +33,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.name }}</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
           <li class="active visible-xs-block"><a href="{{ site.baseurl }}/links.html">Links</a></li>
           <li class="active"><a href="{{ site.baseurl }}/archive.html">Archive</a></li>
           <li class="active"><a href="{{ site.baseurl }}/about.html">About</a></li>
           {% if site.github != '' %}
           <li class="active"><a href="https://github.com/{{ site.github }}">Github</a></li>
           {% endif %}
-        </ul>
-        <ul class="nav navbar-right">
-          <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.name }}</a>
         </ul>
       </div>
     </div>
