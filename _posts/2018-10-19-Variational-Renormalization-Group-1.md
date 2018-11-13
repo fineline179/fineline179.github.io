@@ -18,3 +18,8 @@ form is an $$ N $$ node undirected graph with all-to-all connections. It's well
 known for being a simple model of [how fucking magnets
 work](https://www.youtube.com/watch?v=lFabsRFnWy0), with the simplest
 application being to ferromagnetism.
+
+(Statitician): Well actually, the classical Ising Model is a tuple (G, E, f)
+where G is an undirected graph, and E a set of edges, together defining a set of
+cliques $$ {C_v} $$ partitioning G. X are a set of random variables one-to-one
+associated with G, and f represents a potential functions on the cliques of G.
