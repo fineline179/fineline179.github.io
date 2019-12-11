@@ -148,10 +148,12 @@ An example of the single-hidden-layer network setup is shown in the following fi
 <!-- {:refdef: style="text-align: center;"} -->
 
 <!-- width="600px" -->
+<!-- : width="600px" style="float:center" -->
 
-| ![neural net diagram](/assets/NNGP/Misc3_trans.gif){: width="600px" style="float:center"} |
+
+| ![neural net diagram](/assets/NNGP/Misc4_trans.png){:class="img-responsive"} |
 |:--:|
-| *Figure 2: Single hidden layer network, for $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are not shown because I'm lazy.* |
+| *Figure 2: Single hidden layer network, for $$d_{\textrm{in}}=d_{\textrm{out}}=2$$, $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are not shown because I'm lazy.* |
 
 <br>
 Next, recall that a Gaussian process is defined by its mean and covariance functions
