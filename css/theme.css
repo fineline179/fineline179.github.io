@@ -47,8 +47,13 @@ code {
 }
 
 .sidebar h1 {
-    color: #44bb44;
+    color: #55cc55;
     font-size: 1.3em;
+}
+
+.sidebar h2 {
+    color: #44bb44;
+    font-size: 1.1em;
 }
 
 .sidebar a {
@@ -75,9 +80,24 @@ code {
     border-radius:0;
 }
 
+/* Heading 1 style in main text */
 .well h1 {
-    color: #44bb44;
+    color: #55cc55;
     font-size: 1.3em;
+}
+
+/* Heading 2 style in main text */
+.well h2 {
+    color: #44bb44;
+    font-size: 1.1em;
+}
+
+/* Set button color */
+/* TODO: figure out how to set mouse-over color */
+.btn-default {
+    color: #eeeeee;
+    background-color: #222222;
+    border-color: #cccccc
 }
 
 .author {
@@ -86,6 +106,11 @@ code {
 
 .author a {
     color: #44bb44;
+}
+
+.center-image {
+    margin: 0 auto;
+    display: block;
 }
 
 

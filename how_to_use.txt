@@ -1,0 +1,17 @@
+Basics of jekyll usage
+
+Folders:
+
+/_site: what the static site generator generates. Don't touch this dir!
+/_includes: files that should show up on every page (ie header, footer, etc)
+/_layouts: layout that content will confirm to. These are templates (HTML) that wrap
+           posts and other types of content like pages.
+
+/_posts: put blog posts in here
+
+
+
+Misc Info
+
+- 'jekyll serve' runs the server locally on http://localhost:4000. Use this for local
+  debugging before committing to site.
