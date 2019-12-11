@@ -23,7 +23,7 @@ starts to *decrease* again, as shown in Figure 1(b).<br><br>
 
 | ![double descent diagram](/assets/NNGP/Belkin_2018_double_COPY.png "Double descent diagram"){:class="img-responsive"} |
 |:--:|
-| *Figure 1: a) The classical bias-variance tradeoff. b) The behavior for overparameterized neural networks. Figure from [Belkin et al. (2017)](https://arxiv.org/abs/1812.11118v2)* |
+| *Figure 1: a) The classical bias-variance tradeoff. b) The behavior for overparameterized neural networks. Taken from [Belkin et al. (2018)](https://arxiv.org/abs/1812.11118v2).* |
 
 <br>
 This behavior in overparameterized networks was first seen empirically, so one might
@@ -62,7 +62,7 @@ knowledge of Gaussian processes, and just state relevant results and definitions
 also assume a basic understanding of neural network architecture. A good introduction to
 Gaussian processes can be found in [Bishop
 (2006)](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
-or [Rasmussen et al. (2006)](http://www.gaussianprocess.org/gpml/); this interactive
+or [Rasmussen & Williams (2006)](http://www.gaussianprocess.org/gpml/); this interactive
 [distill.pub post](https://distill.pub/2019/visual-exploration-gaussian-processes/) is
 also useful for intuition. As for the basics of neural networks, it's 2019: you should
 be able to find a summary scrawled on the wall of the nearest restroom. If not, try
@@ -93,7 +93,7 @@ layer are
 
 \begin{equation}
   z_i^0(\vec x) = b_i^0 + \sum_{j=1}^{d_{\textrm{in}}} W_{ij}^0 x_j,
-  \quad 1 \leq i \leq n^1, 
+  \quad 1 \leq i \leq n^1,
 \end{equation}
 
 where the $$W_{ij}^0 \sim \mathcal{N}(0, \sigma_w^2 / d_{\textrm{in}})$$ and $$b_i^0
@@ -149,7 +149,7 @@ An example of the single-hidden-layer network setup is shown in the following fi
 
 <!-- width="600px" -->
 
-| ![neural net diagram](/assets/NNGP/Misc3_trans.gif){: width="600px"} |
+| ![neural net diagram](/assets/NNGP/Misc3_trans.gif){: width="600px" style="float:center"} |
 |:--:|
 | *Figure 2: Single hidden layer network, for $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are not shown because I'm lazy.* |
 
@@ -320,9 +320,11 @@ $$
 $$
 
 where $$\mathbf{I}_2$$ is the $$2 \times 2$$ identity matrix. This integral can be
-evaluated in closed form for certain choices of the non-linearity $$\phi$$ (see
-CHOSAUL2009), but in general it must be computed numerically. LEE2017 provides an
-efficient algorithm for doing this.
+evaluated in closed form for certain choices of the non-linearity $$\phi$$ (see [Cho &
+Saul (2009)](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdf)),
+but in general it must be computed numerically. [Lee et
+al. (2017)](https://arxiv.org/abs/1711.00165) provides an efficient algorithm for doing
+this.
 
 We now have a form for the kernel $$K^1(\vec x,\vec x')$$, computed *deterministically*
 in terms of the kernel of the previous layer, $$K^0(\vec x,\vec x')$$. This gives us the
@@ -430,7 +432,7 @@ given the final $$C^L(\vec x, \vec x')$$, we can make predictions for the test i
 $$\vec x^*$$ in the standard fashion for Gaussian processes.
 
 
-# Discussion
+# Discussion and Conclusions
 We've shown how to compute a Gaussian process that is equivalent to an $$L$$-layer
 neural network at initialization, in the limit as the hidden layer widths become
 infinite. This allows us to do exact Bayesian inference for regression by applying
@@ -442,10 +444,19 @@ few hyperparameters: the network depth $$L$$, the form of the non-linearity $$\p
 and the choice of $$\sigma_w^2$$ and $$\sigma_b^2$$. One interesting question is how the
 choice of $$\sigma_w^2$$ and $$\sigma_b^2$$ affects the performance of the Gaussian
 process. The answer comes from a fascinating related line of research into **deep signal
-propagation**, which started with the papers [Poole
-(2016)](https://arxiv.org/abs/1606.05340v2) and [Schoenholz
-(2017)](https://arxiv.org/abs/1611.01232v2), but I'll leave an exposition of these ideas
-to a future post.
+propagation**, which started with the papers [Poole et
+al. (2016)](https://arxiv.org/abs/1606.05340v2) and [Schoenholz et
+al. (2017)](https://arxiv.org/abs/1611.01232v2), but I'll leave an exposition of these
+ideas to a future post.
+
+In the process of writing this post and understanding the computations involved in the
+NNGP, I was greatly assisted by Jascha Sohl-Dickstein's talk ["Understanding
+overparameterized neural
+networks"](https://slideslive.com/38917769/understanding-overparameterized-neural-networks)
+at the [ICML 2019 workshop: Theoretical Physics for Deep
+Learning](https://icml.cc/Conferences/2019/ScheduleMultitrack?event=3531).
+
+
 
 
 
