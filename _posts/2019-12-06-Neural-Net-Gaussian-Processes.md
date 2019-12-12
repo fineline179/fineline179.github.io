@@ -42,11 +42,11 @@ network with a single hidden layer behaves as **Gaussian process** when the hidd
 width goes to infinity. In [Lee et al. (2017)](https://arxiv.org/abs/1711.00165), this
 result was extended to networks with an arbitrary number of layers, introducing the
 concept of a **neural network Gaussian process (NNGP)**. Since a Gaussian process is a
-method for doing exact Bayesian inference, formulation of an NNGP is a way of doing
-exact Bayesian inference with neural networks (in this case, for regression), and
-obtaining error bounds for the predictions. This is in contrast to the standard method
-of training neural networks by gradient descent on maximum likelihood, which does not
-provide error bounds.
+method for doing Bayesian inference, formulation of an NNGP is a way of doing Bayesian
+inference with neural networks (in this case, for regression), and obtaining error
+bounds for the predictions. This is in contrast to the standard method of training
+neural networks by gradient descent on maximum likelihood, which does not provide error
+bounds.
 
 It's important to clarify that this analysis only applies to a special, seemingly
 restricted case: the behavior of the infinite-width network at **initialization**. In
@@ -78,9 +78,8 @@ For notation, we specify the components of a vector $$\vec a$$ as $$a_i$$. Matri
 bold capital letters $$\mathbf{A}$$, with components $$A_{ij}$$. Specific input training
 examples are indicated by a parenthetical superscript, *e.g.* the first two training
 examples are $$\{ \vec x^{(1)}, \vec x^{(2)} \}$$. Normal superscripts indicate layer
-membership, *e.g.* the biases and weights of the input layer are $$\{ \vec b^0,
-\mathbf{W}^0 \}$$, or $$\{ b_i^0, W_{ij}^0 \}$$ in components; those of the first hidden
-layer are $$\{ \vec b^1, \mathbf{W}^1 \}$$, or $$\{ b_i^1, W_{ij}^1 \}$$ in components.
+membership, *e.g.* the components of the input layer biases and weights are $$\{ b_i^0,
+W_{ij}^0 \}$$; those of the first hidden layer are $$\{ b_i^1, W_{ij}^1 \}$$.
 
 
 ## SINGLE LAYER
@@ -219,8 +218,8 @@ $$
 $$
 
 where the cross terms in the third line vanish because $$\mathbb{E}[b_i^0 W_{jk}^0] =
-0$$, and in the last line we have defined $$K^0(\vec x, \vec x') \equiv \vec x \cdot
-\vec x' / d_{\textrm{in}}$$.
+0$$, and we have defined $$K^0(\vec x, \vec x') \equiv \vec x \cdot \vec x' /
+d_{\textrm{in}}$$ in the last line.
 
 If we look at the covariance between two *different* preactivation components, $$z_i^0$$
 and $$z_j^0$$, for $$i \neq j$$, we see that they are independent since
@@ -352,15 +351,15 @@ Gaussian defined by
   
 $$
 \begin{equation}
-  \mathbf{C} =
+  \mathbf{C}^1 =
   \left(
     \begin{matrix}
-      C(\vec x^{(1)}, \vec x^{(1)}) & \dots  & C(\vec x^{(1)}, \vec x^{(p)}) & C(\vec
+      C^1(\vec x^{(1)}, \vec x^{(1)}) & \dots  & C^1(\vec x^{(1)}, \vec x^{(p)}) & C^1(\vec
       x^{(1)}, \vec x^*)\\
       \vdots                        & \ddots & \vdots & \vdots\\
-      C(\vec x^{(p)}, \vec x^{(1)}) & \dots  & C(\vec x^{(p)}, \vec x^{(p)}) & C(\vec
+      C^1(\vec x^{(p)}, \vec x^{(1)}) & \dots  & C^1(\vec x^{(p)}, \vec x^{(p)}) & C^1(\vec
       x^{(p)}, \vec x^*)\\
-      C(\vec x^*, \vec x^{(1)}) & \dots  & C(\vec x^*, \vec x^{(p)}) & C(\vec x^*,
+      C^1(\vec x^*, \vec x^{(1)}) & \dots  & C^1(\vec x^*, \vec x^{(p)}) & C^1(\vec x^*,
       \vec x^*) 
     \end{matrix}
   \right).
@@ -437,9 +436,9 @@ $$\vec x^*$$ in the standard fashion for Gaussian processes.
 # Discussion and Conclusions
 We've shown how to compute a Gaussian process that is equivalent to an $$L$$-layer
 neural network at initialization, in the limit as the hidden layer widths become
-infinite. This allows us to do exact Bayesian inference for regression by applying
-matrix computations, obtaining predictions and uncertainty estimates for the network,
-without doing any SGD training.
+infinite. This allows us to do Bayesian inference for regression by applying matrix
+computations, obtaining predictions and uncertainty estimates for the network, without
+doing any SGD training.
 
 The form of the Gaussian process covariance matrix, $$C^L(x, x')$$, depends only on a
 few hyperparameters: the network depth $$L$$, the form of the non-linearity $$\phi$$,
@@ -452,7 +451,7 @@ al. (2017)](https://arxiv.org/abs/1611.01232v2), but I'll leave an exposition of
 ideas to a future post.
 
 In the process of writing this post and understanding the computations involved in the
-NNGP, I was greatly assisted by Jascha Sohl-Dickstein's talk ["Understanding
+NNGP, I benefited greatly from Jascha Sohl-Dickstein's talk ["Understanding
 overparameterized neural
 networks"](https://slideslive.com/38917769/understanding-overparameterized-neural-networks)
 at the [ICML 2019 workshop: Theoretical Physics for Deep
