@@ -77,7 +77,7 @@ layers.
 For notation, we specify the components of a vector $$\vec a$$ as $$a_i$$. Matrices are
 bold capital letters $$\mathbf{A}$$, with components $$A_{ij}$$. Specific input training
 examples are indicated by a parenthetical superscript, *e.g.* the first two training
-examples are $$\{ \vec x^{(1)}, \vec x^{(2)} \}$$. Normal superscripts indicate layer
+examples are $$\{ \vec x^{(1)}, \vec x^{(2)} \}$$. Ordinary superscripts indicate layer
 membership, *e.g.* the components of the input layer biases and weights are $$\{ b_i^0,
 W_{ij}^0 \}$$; those of the first hidden layer are $$\{ b_i^1, W_{ij}^1 \}$$.
 
@@ -372,63 +372,64 @@ The generalization to an arbitrary number $$L \geq 2$$ of hidden layers is
 straightforward, as all the important calculations were done in the single-hidden-layer
 case.
 
-The only new step is to write the general expression for the $$l$$th layer's outputs
-$$z_i^l(\vec x)$$ in terms of the preactivations $$z_i^{l-1}(\vec x)$$ of the previous
-layer:
+The only new step is to write the general expression for the $$\ell$$th layer's outputs
+$$z_i^\ell(\vec x)$$ in terms of the preactivations $$z_i^{\ell-1}(\vec x)$$ of the
+previous layer:
 
 $$
 \begin{equation}
-  z_i^l(\vec x) = b_i^l + \sum_{j=1}^{n^l} W_{ij}^l \phi(z_j^{l-1}(\vec x))\quad
+  z_i^\ell(\vec x) = b_i^\ell + \sum_{j=1}^{n^\ell} W_{ij}^\ell \phi(z_j^{\ell-1}(\vec
+  x))\quad
   \begin{cases}
-    1 \leq i \leq n^{l+1},           &\text{for $1 \leq l < L$}\\
-    1 \leq i \leq d_{\textrm{out}},  &\text{for $l = L$}
+    1 \leq i \leq n^{\ell+1},       &\text{for $1 \leq \ell < L$}\\
+    1 \leq i \leq d_{\textrm{out}}, &\text{for $\ell = L$}
   \end{cases}
 \end{equation}
 $$
 
-where the $$W_{ij}^l \sim \mathcal{N}(0, \sigma_w^2 / n^l)$$ and $$b_i^l \sim
-\mathcal{N}(0, \sigma_b^2)$$ are all i.i.d. for each layer $$l$$. The weight
+where the $$W_{ij}^\ell \sim \mathcal{N}(0, \sigma_w^2 / n^\ell)$$ and $$b_i^\ell \sim
+\mathcal{N}(0, \sigma_b^2)$$ are all i.i.d. for each layer $$\ell$$. The weight
 orthogonality relations for each layer are
 
 $$
 \begin{equation}
-    \mathbb{E}[W_{ij}^l W_{km}^l] = \delta_{ik} \delta_{jm}
-    \frac{\sigma_w^2}{n^l}, \quad
-    \mathbb{E}[b_i^l b_j^l] = \delta_{ij} \sigma_b^2, \quad
-    \mathbb{E}[b_i^l W_{jk}^l] = 0, \qquad 1 \leq l \leq L.
+    \mathbb{E}[W_{ij}^\ell W_{km}^\ell] = \delta_{ik} \delta_{jm}
+    \frac{\sigma_w^2}{n^\ell}, \quad
+    \mathbb{E}[b_i^\ell b_j^\ell] = \delta_{ij} \sigma_b^2, \quad
+    \mathbb{E}[b_i^\ell W_{jk}^\ell] = 0, \qquad 1 \leq \ell \leq L.
 \end{equation}
 $$
 
 Similar to the relation between $$K^1(\vec x,\vec x')$$ and $$K^0(\vec x,\vec x')$$, in
-the limit as $$n^l \to \infty$$ the expression for the kernel at layer $$l$$ can be
-written as a deterministic function of the kernel at layer $$l-1$$:
+the limit as $$n^\ell \to \infty$$ the expression for the kernel at layer $$\ell$$ can
+be written as a deterministic function of the kernel at layer $$\ell-1$$:
 
 $$
 \begin{equation}
-  K^l(\vec x,\vec x') = \frac{1}{n^l} \sum_{k=1}^{n^l}
-  \phi(z_k^{l-1}(\vec x)) \phi(z_k^{l-1}(\vec x')),
+  K^\ell(\vec x,\vec x') = \frac{1}{n^\ell} \sum_{k=1}^{n^\ell}
+  \phi(z_k^{\ell-1}(\vec x)) \phi(z_k^{\ell-1}(\vec x')),
 \end{equation}
 $$
 
 $$
 \begin{equation}
-  \lim_{n^l \to \infty} K^l(\vec x,\vec x') = \!\!\!\! \iint\limits_{z,z' =
+  \lim_{n^\ell \to \infty} K^\ell(\vec x,\vec x') = \!\!\!\! \iint\limits_{z,z' =
     -\infty}^{\infty}\!\!\!\! dz dz' \phi(z) \phi(z') \mathcal{N}\left(z, z'; 0,
-    \sigma_b^2 \mathbf{I}_2 + \sigma_w^2 \left[\begin{matrix} K^{l-1}(\vec x, \vec x) &
-        K^{l-1}(\vec x, \vec x')\\ K^{l-1}(\vec x', \vec x) & K^{l-1}(\vec x', \vec
-        x') \end{matrix} 
+    \sigma_b^2 \mathbf{I}_2 + \sigma_w^2 \left[\begin{matrix} K^{\ell-1}(\vec x, \vec x)
+    & K^{\ell-1}(\vec x, \vec x')\\ K^{\ell-1}(\vec x', \vec x) & K^{\ell-1}(\vec x',
+    \vec x') \end{matrix} 
     \right]  \right)
 \end{equation}
 $$
 
-which applies for all $$1 \leq l \leq L$$.
+which applies for all $$1 \leq \ell \leq L$$.
 
 To calculate the covariance matrix $$C^L(\vec x, \vec x')$$ for the final ouput layer,
 we first repeat the initial step from the single-hidden-layer case to calculate
 $$K^0(\vec x, \vec x')$$ for all $$\vec x, \vec x' \in \{ \vec x^{(1)}, \dots, \vec
-x^{(p)}, \vec{x}^* \}$$. Next, for each $$l \in (1, \dots, L)$$, in sequence, we
-calculate $$K^l(\vec x, \vec x')$$ in terms of $$K^{l-1}(\vec x, \vec x')$$, for all
-$$\vec x, \vec x' \in \{ \vec x^{(1)}, \dots, \vec x^{(p)}, \vec{x}^* \}$$. Finally,
+x^{(p)}, \vec{x}^* \}$$. Next, for each $$\ell \in (1, \dots, L)$$, in sequence, we
+calculate $$K^\ell(\vec x, \vec x')$$ in terms of $$K^{\ell-1}(\vec x, \vec x')$$, for
+all $$\vec x, \vec x' \in \{ \vec x^{(1)}, \dots, \vec x^{(p)}, \vec{x}^* \}$$. Finally,
 given the final $$C^L(\vec x, \vec x')$$, we can make predictions for the test input
 $$\vec x^*$$ in the standard fashion for Gaussian processes.
 
@@ -456,13 +457,5 @@ overparameterized neural
 networks"](https://slideslive.com/38917769/understanding-overparameterized-neural-networks)
 at the [ICML 2019 workshop: Theoretical Physics for Deep
 Learning](https://icml.cc/Conferences/2019/ScheduleMultitrack?event=3531).
-
-
-
-
-
-
-
-
 
 
