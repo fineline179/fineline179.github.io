@@ -13,13 +13,13 @@ architectures display behavior contrary to this.
 
 For example, as we increase the number of parameters of a standard neural network (a
 multilayer perceptron), its model capacity grows, and it initially displays behavior
-similar to the traditional bias-variance curve, shown in Figure 1(a). At a certain
-point, the model capacity becomes large enough that the network can fit the training
-data *exactly*. At this point, called the *interpolation threshold* in Figure 1(b),
-standard bias-variance theory tells us we should expect our model to have drastically
-overfit the training data, so that its performance on test data will be poor. But if we
-increase the model capacity even *further*, we observe something strange: the test error
-starts to *decrease* again, as shown in Figure 1(b).<br><br>
+similar to the traditional bias-variance curve, shown in Figure 1(a). Eventually, the
+model capacity becomes large enough that the network can fit the training data
+*exactly*. At this point, called the *interpolation threshold* in Figure 1(b), standard
+bias-variance theory tells us we should expect our model to have drastically overfit the
+training data, so that its performance on test data will be poor. But if we increase the
+model capacity even *further*, we observe something strange: the test error starts to
+*decrease* again, as shown in Figure 1(b).<br><br>
 
 | ![double descent diagram](/assets/NNGP/Belkin_2018_double_COPY.png "Double descent diagram"){:class="img-responsive"} |
 |:--:|
@@ -41,32 +41,32 @@ The infinite-width limit was studied in [Neal
 network with a single hidden layer behaves as **Gaussian process** when the hidden layer
 width goes to infinity. In [Lee et al. (2017)](https://arxiv.org/abs/1711.00165), this
 result was extended to networks with an arbitrary number of layers, introducing the
-concept of a **neural network Gaussian process (NNGP)**. Since a Gaussian process is a
-method for doing Bayesian inference, formulation of an NNGP is a way of doing Bayesian
-inference with neural networks (in this case, for regression), and obtaining error
-bounds for the predictions. This is in contrast to the standard method of training
-neural networks by gradient descent on maximum likelihood, which does not provide error
-bounds.
+concept of a **neural network Gaussian process (NNGP)**. A Gaussian process is a method
+for doing Bayesian inference, and an NNGP is a way of doing Bayesian inference with
+neural networks (in this case, for regression), and obtaining error bounds for the
+predictions. This is in contrast to the standard method of training neural networks with
+gradient descent on maximum likelihood, which does not provide error bounds.
 
 It's important to clarify that this analysis only applies to a special, seemingly
 restricted case: the behavior of the infinite-width network at **initialization**. In
 particular, if we wish to compare the performance of a NNGP to a finite-but-large-width
-network trained via gradient descent, the only part of the network that we train is the
-set of weights between the final hidden layer and the outputs. The rest of the weights
-are frozen at their initialization values. Surprisingly, this sort of minimally trained
-network has non-trivial predictive ability.
+network trained via gradient descent, we only train the network weights between the
+final hidden layer and the outputs. The rest of the weights are frozen at their
+initialization values. Surprisingly, this sort of minimally trained network has
+*non-trivial* predictive ability.
 
-The calculational details of the NNGP can be confusing --- at least they were for me ---
-so the aim of the rest of this post is to make these details clear. I'll assume basic
+The details of the NNGP calculation can be confusing --- at least they were for me ---
+so the aim of the rest of this post is to make these details clear. I'll assume a basic
 knowledge of Gaussian processes, and just state relevant results and definitions. I'll
 also assume a basic understanding of neural network architecture. A good introduction to
 Gaussian processes can be found in [Bishop
 (2006)](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
-or [Rasmussen & Williams (2006)](http://www.gaussianprocess.org/gpml/); this interactive
-[distill.pub post](https://distill.pub/2019/visual-exploration-gaussian-processes/) is
-also useful for intuition. As for the basics of neural networks, it's 2019: you should
-be able to find a summary scrawled on the wall of the nearest restroom. If not, try
-pretty much anywhere on the internet.
+or [Rasmussen & Williams (2006)](http://www.gaussianprocess.org/gpml/), and this
+interactive [distill.pub
+post](https://distill.pub/2019/visual-exploration-gaussian-processes/) is also useful
+for intuition. [Bishop
+(2006)](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+also provides a solid introduction to the basics of neural networks.
 
 
 # Derivation
@@ -152,14 +152,13 @@ An example of the single-hidden-layer network setup is shown in the following fi
 
 | ![neural net diagram](/assets/NNGP/Misc4_trans.png){:class="img-responsive"} |
 |:--:|
-| *Figure 2: Single hidden layer network, for $$d_{\textrm{in}}=d_{\textrm{out}}=2$$, $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are not shown because I'm lazy.* |
+| *Figure 2: Single hidden layer network, for $$d_{\textrm{in}}=d_{\textrm{out}}=2$$, $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are omitted for simplicity.* |
 
-<br>
-Next, recall that a Gaussian process is defined by its mean and covariance functions
-$$\mu(\vec x)$$ and $$C(\vec x, \vec x')$$, given two values of the input vector $$\vec
-x$$ and $$\vec x'$$. We say that $$a(\vec x)$$ is drawn from a Gaussian process,
-$$a(\vec x) \sim \mathcal{GP}(\vec \mu, \mathbf{C})$$, if any finite number $$p$$ of
-draws $$\{a(\vec x^{(1)}), \dots, a(\vec x^{(p)}) \}$$ follows a multivariate normal
+<br> Next, recall that a Gaussian process is defined by its mean, $$\mu(\vec x)$$, and
+covariance, $$C(\vec x, \vec x')$$, given two values of the input vector $$\vec x$$ and
+$$\vec x'$$. We say that $$a(\vec x)$$ is drawn from a Gaussian process, $$a(\vec x)
+\sim \mathcal{GP}(\vec \mu, \mathbf{C})$$, if any finite number $$p$$ of draws
+$$\{a(\vec x^{(1)}), \dots, a(\vec x^{(p)}) \}$$ follows a multivariate normal
 distribution $$\mathcal{N}(\vec \mu, \mathbf{C})$$, with
 
 $$
@@ -240,9 +239,9 @@ $$
 Thus every component of the preactivation computes an independent sample of the *same*
 Gaussian process, $$\mathcal{GP}(0, C^0(\vec x, \vec x'))$$.
 
-Next, we go up one layer and look at the network outputs $$z_i^1(\vec x)$$. Paralleling
-the argument for the $$z_i^0(\vec x)$$, we see that for each $$i$$, $$z_i^1 | \vec y^1$$
-is a Gaussian process. The mean and covariance functions here are
+Next, we go up one layer and look at the network outputs $$z_i^1(\vec x)$$. Following
+the same line of reasoning as for the $$z_i^0(\vec x)$$, we see that for each $$i$$,
+$$z_i^1 | \vec y^1$$ is a Gaussian process. The mean and covariance functions here are
 
 $$
 \begin{align}
@@ -276,9 +275,9 @@ third and fourth line are equal because $$\mathbb{E}[W_{ik}^1 y_k^1(\vec x)] = 0
 which follows from the fact that $$y_k^1(\vec x)$$ depends only on $$W_{ik}^0$$ and
 $$b_i^0$$, both of which are independent of $$W_{ik}^1$$.
 
-Again paralleling the argument for the $$z_i^0(\vec x)$$, if we look at the covariance
-between two *different* components of the output, $$z_i^1$$ and $$z_j^1$$, for $$i \neq
-j$$, we see that they are independent, since
+Again, following the same line of reasoning as for the $$z_i^0(\vec x)$$, if we look at
+the covariance between two *different* components of the output, $$z_i^1$$ and
+$$z_j^1$$, for $$i \neq j$$, we see that they are independent, since
 
 $$
 \begin{align}
@@ -299,7 +298,7 @@ are therefore redundant: there is no difference between a network with
 $$d_{\textrm{out}}$$ outputs, and $$d_{\textrm{out}}$$ copies of an equivalent network
 but with only one output.
 
-Substituting the non-linearity $$\phi$$ back into the definition of $$y_i^1$$, we have
+Substituting $$\phi$$ back into the definition of $$y_i^1$$, we have
 
 \begin{equation}
   K^1(\vec x,\vec x') = \frac{1}{n^1} \sum_{k=1}^{n^1}
@@ -321,11 +320,10 @@ $$
 $$
 
 where $$\mathbf{I}_2$$ is the $$2 \times 2$$ identity matrix. This integral can be
-evaluated in closed form for certain choices of the non-linearity $$\phi$$ (see [Cho &
-Saul (2009)](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdf)),
-but in general it must be computed numerically. [Lee et
-al. (2017)](https://arxiv.org/abs/1711.00165) provides an efficient algorithm for doing
-this.
+evaluated in closed form for certain choices of $$\phi$$ (see [Cho & Saul
+(2009)](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdf)), but in
+general it must be computed numerically. An efficient algorithm for this computation was
+provided by [Lee et al. (2017)](https://arxiv.org/abs/1711.00165).
 
 We now have a form for the kernel $$K^1(\vec x,\vec x')$$, computed *deterministically*
 in terms of the kernel of the previous layer, $$K^0(\vec x,\vec x')$$. This gives us the
@@ -334,20 +332,20 @@ final, output Gaussian process for the entire network via $$C^1(\vec x, \vec x')
 make a test prediction, we must:
 
 1. Calculate the kernel $$K^0(\vec x,\vec x')$$ for all pairs taken from the set of
-training and test inputs. \eeg for $$p$$ training inputs and test input $$\vec x^*$$,
-both $$\vec x$$ and $$\vec x'$$ range over $$\{ \vec x^{(1)}, \dots, \vec x^{(p)},
-\vec{x}^* \}$$, so we must calculate $$(p+1)(p+2)/2$$ quantities (as the kernel matrix
-is symmetric).
+   training and test inputs. *e.g.* for $$p$$ training inputs and test input $$\vec
+   x^*$$, both $$\vec x$$ and $$\vec x'$$ range over $$\{ \vec x^{(1)}, \dots, \vec
+   x^{(p)}, \vec{x}^* \}$$, so we need to calculate $$(p+1)(p+2)/2$$ quantities (as the
+   kernel matrix is symmetric).
 
 2. Calculate the kernel $$K^1(\vec x,\vec x')$$ for all the above pairs (in terms of
-$$K^0(\vec x,\vec x')$$), again yielding $$(p+1)(p+2)/2$$ quantities. The covariance
-matrix for the output Gaussian process then has elements $$C^1(\vec x, \vec x') =
-\sigma_b^2 + \sigma_w^2 K^1(\vec x, \vec x')$$, where $$\vec x, \vec x' \in \{ \vec
-x^{(1)}, \dots, \vec x^{(p)}, \vec{x}^* \}$$
+   $$K^0(\vec x,\vec x')$$), again yielding $$(p+1)(p+2)/2$$ quantities. The covariance
+   matrix for the output Gaussian process then has elements $$C^1(\vec x, \vec x') =
+   \sigma_b^2 + \sigma_w^2 K^1(\vec x, \vec x')$$, where $$\vec x, \vec x' \in \{ \vec
+   x^{(1)}, \dots, \vec x^{(p)}, \vec{x}^* \}$$
 
 3. Use the output Gaussian process in the standard fashion to make a prediction for the
-test input, by marginalizing over the training input variables in the multivariate
-Gaussian defined by
+   test input, by marginalizing over the training input variables in the multivariate
+   Gaussian defined by
   
 $$
 \begin{equation}
@@ -369,12 +367,12 @@ $$
 
 ## L LAYERS
 The generalization to an arbitrary number $$L \geq 2$$ of hidden layers is
-straightforward, as all the important calculations were done in the single-hidden-layer
-case.
+straightforward, as all of the relevant calculations were done in the
+single-hidden-layer case.
 
-The only new step is to write the general expression for the $$\ell$$th layer's outputs
-$$z_i^\ell(\vec x)$$ in terms of the preactivations $$z_i^{\ell-1}(\vec x)$$ of the
-previous layer:
+The only additional step is to write the general expression for the $$\ell$$th layer's
+outputs $$z_i^\ell(\vec x)$$ in terms of the preactivations $$z_i^{\ell-1}(\vec x)$$ of
+the previous layer:
 
 $$
 \begin{equation}
@@ -437,19 +435,18 @@ $$\vec x^*$$ in the standard fashion for Gaussian processes.
 # Discussion and Conclusions
 We've shown how to compute a Gaussian process that is equivalent to an $$L$$-layer
 neural network at initialization, in the limit as the hidden layer widths become
-infinite. This allows us to do Bayesian inference for regression by applying matrix
-computations, obtaining predictions and uncertainty estimates for the network, without
-doing any SGD training.
+infinite. This gives us an analytic handle on the problem, and allows us to do Bayesian
+inference for regression by applying matrix computations, obtaining predictions and
+uncertainty estimates for the network, without doing any SGD training.
 
 The form of the Gaussian process covariance matrix, $$C^L(x, x')$$, depends only on a
-few hyperparameters: the network depth $$L$$, the form of the non-linearity $$\phi$$,
-and the choice of $$\sigma_w^2$$ and $$\sigma_b^2$$. One interesting question is how the
-choice of $$\sigma_w^2$$ and $$\sigma_b^2$$ affects the performance of the Gaussian
-process. The answer comes from a fascinating related line of research into **deep signal
-propagation**, which started with the papers [Poole et
+few hyperparameters: the network depth $$L$$, the form of $$\phi$$, and the choice of
+$$\sigma_w^2$$ and $$\sigma_b^2$$. One interesting question is how the choice of
+$$\sigma_w^2$$ and $$\sigma_b^2$$ affects the performance of the Gaussian process. The
+answer comes from a fascinating related line of research into **deep signal
+propagation**, starting with the papers [Poole et
 al. (2016)](https://arxiv.org/abs/1606.05340v2) and [Schoenholz et
-al. (2017)](https://arxiv.org/abs/1611.01232v2), but I'll leave an exposition of these
-ideas to a future post.
+al. (2017)](https://arxiv.org/abs/1611.01232v2), which I'll cover in a future blog post.
 
 In the process of writing this post and understanding the computations involved in the
 NNGP, I benefited greatly from Jascha Sohl-Dickstein's talk ["Understanding
@@ -458,4 +455,5 @@ networks"](https://slideslive.com/38917769/understanding-overparameterized-neura
 at the [ICML 2019 workshop: Theoretical Physics for Deep
 Learning](https://icml.cc/Conferences/2019/ScheduleMultitrack?event=3531).
 
+Thanks also to Brandon DiNunno for comments and suggestions.
 
