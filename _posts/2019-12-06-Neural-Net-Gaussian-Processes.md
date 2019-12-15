@@ -152,7 +152,7 @@ An example of the single-hidden-layer network setup is shown in the following fi
 
 | ![neural net diagram](/assets/NNGP/Misc4_trans.png){:class="img-responsive"} |
 |:--:|
-| *Figure 2: Single hidden layer network, for $$d_{\textrm{in}}=d_{\textrm{out}}=2$$, $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are omitted for simplicity.* |
+| *Figure 2: Single hidden layer network, for $$d_{\textrm{in}}=d_{\textrm{out}}=2$$, $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are not drawn for simplicity.* |
 
 <br> Next, recall that a Gaussian process is defined by its mean, $$\mu(\vec x)$$, and
 covariance, $$C(\vec x, \vec x')$$, given two values of the input vector $$\vec x$$ and
@@ -448,12 +448,11 @@ propagation**, starting with the papers [Poole et
 al. (2016)](https://arxiv.org/abs/1606.05340v2) and [Schoenholz et
 al. (2017)](https://arxiv.org/abs/1611.01232v2), which I'll cover in a future blog post.
 
-In the process of writing this post and understanding the computations involved in the
-NNGP, I benefited greatly from Jascha Sohl-Dickstein's talk ["Understanding
-overparameterized neural
+In the process of understanding the computations involved in the NNGP, I benefited
+greatly from Jascha Sohl-Dickstein's talk ["Understanding overparameterized neural
 networks"](https://slideslive.com/38917769/understanding-overparameterized-neural-networks)
 at the [ICML 2019 workshop: Theoretical Physics for Deep
 Learning](https://icml.cc/Conferences/2019/ScheduleMultitrack?event=3531).
 
-Thanks also to Brandon DiNunno for comments and suggestions.
+Thanks to Brandon DiNunno for comments and suggestions on this post.
 
