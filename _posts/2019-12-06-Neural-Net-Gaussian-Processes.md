@@ -37,10 +37,10 @@ non-trivial behavior of the finite-sized system remains, and b) the study of thi
 behavior will yield to analytic analysis.
 
 The infinite-width limit was studied in [Neal
-(1994)](https://www.cs.toronto.edu/~radford/ftp/pin.pdf), where it was shown that a
-network with a single hidden layer behaves as **Gaussian process** when the hidden layer
-width goes to infinity. In [Lee et al. (2017)](https://arxiv.org/abs/1711.00165), this
-result was extended to networks with an arbitrary number of layers, introducing the
+(1994)](https://www.cs.toronto.edu/~radford/pin.abstract.html), where it was shown that
+a network with a single hidden layer behaves as **Gaussian process** when the hidden
+layer width goes to infinity. In [Lee et al. (2017)](https://arxiv.org/abs/1711.00165),
+this result was extended to networks with an arbitrary number of layers, introducing the
 concept of a **neural network Gaussian process (NNGP)**. A Gaussian process is a method
 for doing Bayesian inference, and an NNGP is a way of doing Bayesian inference with
 neural networks (in this case, for regression), and obtaining error bounds for the
@@ -152,7 +152,7 @@ An example of the single-hidden-layer network setup is shown in the following fi
 
 | ![neural net diagram](/assets/NNGP/Misc4_trans.png){:class="img-responsive"} |
 |:--:|
-| *Figure 2: Single hidden layer network, for $$d_{\textrm{in}}=d_{\textrm{out}}=2$$, $$n^1 = 3$$. Note the biases $$b_i^0$$ and $$b_i^1$$ are not drawn for simplicity.* |
+| *Figure 2: Single hidden layer network, with $$d_{\textrm{in}} = 2$$, $$d_{\textrm{out}} = 2$$, $$n^1 = 3$$. For simplicity, the biases $$b_i^0$$ and $$b_i^1$$ are not drawn .* |
 
 <br> Next, recall that a Gaussian process is defined by its mean, $$\mu(\vec x)$$, and
 covariance, $$C(\vec x, \vec x')$$, given two values of the input vector $$\vec x$$ and
