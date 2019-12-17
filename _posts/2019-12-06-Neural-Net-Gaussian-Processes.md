@@ -32,7 +32,7 @@ interesting regime is the limit where the network layer widths go to infinity, w
 corresponds to the far right end of Figure 1(b). This sort of infinite limit is often
 used in physics, as it makes certain analyses analytically tractable. For example,
 thermodynamics emerges from statistical mechanics in the limit where the number of
-interacting particles goes to infinity. The hope is that in the infinite limit, a) some
+particles goes to infinity. The hope is that in the infinite limit, a) some
 non-trivial behavior of the finite-sized system remains, and b) the study of this
 behavior will yield to analytic analysis.
 
@@ -48,7 +48,7 @@ predictions. This is in contrast to the standard method of training neural netwo
 gradient descent on maximum likelihood, which does not provide error bounds.
 
 It's important to clarify that this analysis only applies to a special, seemingly
-restricted case: the behavior of the infinite-width network at **initialization**. In
+restricted case: the behavior of the infinite-width network at *initialization*. In
 particular, if we wish to compare the performance of a NNGP to a finite-but-large-width
 network trained via gradient descent, we only train the network weights between the
 final hidden layer and the outputs. The rest of the weights are frozen at their
@@ -440,7 +440,7 @@ inference for regression by applying matrix computations, obtaining predictions 
 uncertainty estimates for the network, without doing any SGD training.
 
 The form of the Gaussian process covariance matrix, $$C^L(x, x')$$, depends only on a
-few hyperparameters: the network depth $$L$$, the form of $$\phi$$, and the choice of
+few hyperparameters: the network depth $$L$$, the choice of $$\phi$$, and the choice of
 $$\sigma_w^2$$ and $$\sigma_b^2$$. One interesting question is how the choice of
 $$\sigma_w^2$$ and $$\sigma_b^2$$ affects the performance of the Gaussian process. The
 answer comes from a fascinating related line of research into **deep signal
@@ -454,5 +454,5 @@ networks"](https://slideslive.com/38917769/understanding-overparameterized-neura
 at the [ICML 2019 workshop: Theoretical Physics for Deep
 Learning](https://icml.cc/Conferences/2019/ScheduleMultitrack?event=3531).
 
-Thanks to Brandon DiNunno for comments and suggestions on this post.
+Thanks to Brandon DiNunno for helpful comments and suggestions on this post.
 
