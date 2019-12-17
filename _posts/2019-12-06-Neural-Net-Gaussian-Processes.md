@@ -38,7 +38,7 @@ behavior will yield to analytic analysis.
 
 The infinite-width limit was studied in [Neal
 (1994)](https://www.cs.toronto.edu/~radford/pin.abstract.html), where it was shown that
-a network with a single hidden layer behaves as **Gaussian process** when the hidden
+a network with a single hidden layer behaves as a **Gaussian process** when the hidden
 layer width goes to infinity. In [Lee et al. (2017)](https://arxiv.org/abs/1711.00165),
 this result was extended to networks with an arbitrary number of layers, introducing the
 concept of a **neural network Gaussian process (NNGP)**. A Gaussian process is a method
