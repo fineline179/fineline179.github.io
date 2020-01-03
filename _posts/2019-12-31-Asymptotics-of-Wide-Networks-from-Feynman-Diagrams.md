@@ -30,12 +30,12 @@ $$
 \end{align}
 $$
 
-during training. Here $D_{\textrm{tr}}$ is the training set, $(x', y')$ is a
-specific training input and target value pair, the $\theta^\mu$ are the weights of the
-neural network, $\ell(x', y')$ is the single sample loss, such that $L =
-\sum_{(x',y') \in D_{\textrm{tr}}} \ell(x',y')$ is the total loss, and we have defined
-$\Theta(x, x') = \sum_\mu \frac{\partial f(x)}{\partial \theta^\mu} \frac{\partial
-f(x')}{\partial \theta^\mu}$ as the Neural Tangent Kernel (NTK). If we use the mean
+during training. Here $D_{\textrm{tr}}$ is the training set, $(x', y')$ is a specific
+training input and target value pair, the $\theta^\mu$ are the weights of the neural
+network, $\ell(x', y')$ is the single sample loss, such that $L = \sum_{(x',y') \in
+D_{\textrm{tr}}} \ell(x',y')$ is the total loss, and we have defined $\Theta(x, x') =
+\sum_\mu \left( \partial f(x) / \partial \theta^\mu \right) \left( \partial f(x') /
+\partial \theta^\mu \right)$ as the Neural Tangent Kernel (NTK). If we use the mean
 squared error (MSE) for our loss, we have
 
 \begin{equation}
@@ -651,8 +651,8 @@ $$
 \begin{equation}
   \mathbb{E}_\theta \left[ O_{s}(x_1,\ldots,x_s;t) \right] =
   \left\{\begin{array}{ll}
-           \mathcal{O}\left(n^{\frac{2-s}{2}}\right)&,\  s\, \textrm{even}\\
-           \mathcal{O}\left(n^{\frac{1-s}{2}}\right) &,\  s\, \textrm{odd}
+           \mathcal{O}\left(n^{1-s/2}\right)&,\  s\, \textrm{even}\\
+           \mathcal{O}\left(n^{1/2-s/2}\right) &,\  s\, \textrm{odd}
          \end{array}\right.\,
 \end{equation}
 $$
