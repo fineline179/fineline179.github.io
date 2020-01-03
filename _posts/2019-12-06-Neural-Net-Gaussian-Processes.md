@@ -21,9 +21,17 @@ training data, so that its performance on test data will be poor. But if we incr
 model capacity even *further*, we observe something strange: the test error starts to
 *decrease* again, as shown in Figure 1(b).<br><br>
 
-| ![double descent diagram](/assets/NNGP/Belkin_2018_double_COPY.png "Double descent diagram"){:class="img-responsive"} |
-|:--:|
-| *Figure 1: a) The classical bias-variance tradeoff. b) The behavior for overparameterized neural networks. Taken from [Belkin et al. (2018)](https://arxiv.org/abs/1812.11118v2).* |
+<div style="text-align: center">
+    <img src="/assets/NNGP/Belkin_2018_double_COPY.png" width="100%">
+    <br>
+    <i><b>Figure 1</b>: a) The classical bias-variance tradeoff. b) The behavior for
+    overparameterized neural networks. Taken from <a
+    href="https://arxiv.org/abs/1812.11118v2">Belkin et al. (2018)</a>.</i>
+</div>
+
+<!-- | ![double descent diagram](/assets/NNGP/Belkin_2018_double_COPY.png "Double descent diagram"){:class="img-responsive"} | -->
+<!-- |:--:| -->
+<!-- | *Figure 1: a) The classical bias-variance tradeoff. b) The behavior for overparameterized neural networks. Taken from [Belkin et al. (2018)](https://arxiv.org/abs/1812.11118v2).* | -->
 
 <br>
 This behavior in overparameterized networks was first seen empirically, so one might
@@ -149,10 +157,17 @@ An example of the single-hidden-layer network setup is shown in the following fi
 <!-- width="600px" -->
 <!-- : width="600px" style="float:center" -->
 
+<div style="text-align: center">
+    <img src="/assets/NNGP/Misc4_trans.png" width="95%">
+    <br>
+    <i><b>Figure 2</b>: Single hidden layer network, with $d_{\textrm{in}} = 2$,
+    $d_{\textrm{out}} = 2$, $n^1 = 3$. For simplicity, the biases $b_i^0$ and $b_i^1$
+    are not drawn.</i> 
+</div>
 
-| ![neural net diagram](/assets/NNGP/Misc4_trans.png){:class="img-responsive"} |
-|:--:|
-| *Figure 2: Single hidden layer network, with $$d_{\textrm{in}} = 2$$, $$d_{\textrm{out}} = 2$$, $$n^1 = 3$$. For simplicity, the biases $$b_i^0$$ and $$b_i^1$$ are not drawn .* |
+<!-- | ![neural net diagram](/assets/NNGP/Misc4_trans.png){:class="img-responsive"} | -->
+<!-- |:--:| -->
+<!-- | *Figure 2: Single hidden layer network, with $$d_{\textrm{in}} = 2$$, $$d_{\textrm{out}} = 2$$, $$n^1 = 3$$. For simplicity, the biases $$b_i^0$$ and $$b_i^1$$ are not drawn.* | -->
 
 <br> Next, recall that a Gaussian process is defined by its mean, $$\mu(\vec x)$$, and
 covariance, $$C(\vec x, \vec x')$$, given two values of the input vector $$\vec x$$ and

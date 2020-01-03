@@ -108,6 +108,59 @@ code {
     color: #44bb44;
 }
 
+/* Stuff for mathjax latex environments */
+.theorem {
+    display: block;
+    font-style: italic;
+}
+
+.theorem:before {
+    content: "Theorem. ";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.theorem[text]:before {
+    content: "Theorem (" attr(text) ") ";
+}
+
+.lemma {
+    display: block;
+    margin: 12px 0;
+    font-style: italic;
+}
+
+.lemma:before {
+    content: "Lemma.";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.conjecture {
+    display: block;
+    margin: 12px 0;
+    font-style: italic;
+}
+
+.conjecture:before {
+    content: "Conjecture.";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.definition {
+    display: block;
+    margin: 12px 0;
+    font-style: italic;
+}
+
+.definition:before {
+    content: "Definition.";
+    font-weight: bold;
+    font-style: normal;
+}
+
+
 
 /* Customizing navbar-inverse color scheme, to make all black */
 /* navbar */
