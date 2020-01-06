@@ -32,8 +32,8 @@ $$
 
 during training. Here $D_{\textrm{tr}}$ is the training set, $(x', y')$ is a specific
 training input and target value pair, the $\theta^\mu$ are the weights of the neural
-network, $\ell(x', y')$ is the single sample loss, such that $L = \sum_{(x',y') \in
-D_{\textrm{tr}}} \ell(x',y')$ is the total loss, and we have defined $\Theta(x, x') =
+network, $\ell(x', y')$ is the single sample loss, such that the total loss $L =
+\sum_{(x',y') \in D_{\textrm{tr}}} \ell(x',y')$, and we have defined $\Theta(x, x') =
 \sum_\mu \left( \partial f(x) / \partial \theta^\mu \right) \left( \partial f(x') /
 \partial \theta^\mu \right)$ as the Neural Tangent Kernel (NTK). If we use the mean
 squared error (MSE) for our loss, we have
