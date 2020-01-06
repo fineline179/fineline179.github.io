@@ -283,13 +283,13 @@ Figure 1:
 <div style="text-align: center">
     <img src="/assets/FEYNMAN/bubble1.png" width="40%">
     <br>
-    <i><b>Figure 1</b>: The Feynman diagram for the two-point functions of a single
+    <i><b>Figure 1</b>: The Feynman diagram for the two-point function of a single
     layer network.</i> 
 </div>
  
 <!-- | ![2 point single layer](/assets/FEYNMAN/bubble1.png){:class="img-responsive"} | -->
 <!-- |:--:| -->
-<!-- | *Figure 1: The Feynman diagram for the two-point functions of a single layer network.* | -->
+<!-- | *Figure 1: The Feynman diagram for the two-point function of a single layer network.* | -->
 
 <br>
 We can compute how a diagram scales with $n$ by using the **Feynman rules**: 1) each
