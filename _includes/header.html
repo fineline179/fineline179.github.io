@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 
-<!-- for latex2markdown compatibility -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        extensions: ["tex2jax.js", "AMSmath.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\[","\]"] ],
-            processEscapes: true
-        },
-        TeX: { equationNumbers: { autoNumber: "AMS"} }
-    });
-</script>
+<!-- <\!-- for latex2markdown compatibility -\-> -->
+<!-- <script type="text/x-mathjax-config"> -->
+<!--     MathJax.Hub.Config({ -->
+<!--         extensions: ["tex2jax.js", "AMSmath.js"], -->
+<!--         jax: ["input/TeX", "output/HTML-CSS"], -->
+<!--         tex2jax: { -->
+<!--             inlineMath: [ ['$','$'], ["\\(","\\)"] ], -->
+<!--             displayMath: [ ['$$','$$'], ["\[","\]"] ], -->
+<!--             processEscapes: true -->
+<!--         }, -->
+<!--         TeX: { equationNumbers: { autoNumber: "AMS"} } -->
+<!--     }); -->
+<!-- </script> -->
 
-<!-- load mathjax library -->
-<script type="text/javascript"
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<!-- <\!-- load mathjax library -\-> -->
+<!-- <script type="text/javascript" -->
+<!--     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> -->
+<!-- </script> -->
 
 <!-- For KaTeX with auto-render capability -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous"> -->
-<!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script> -->
-<!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script> -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
 <html lang="en">
 
@@ -30,7 +31,7 @@
     <meta charset="UTF-8">
     <title>{{ site.name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
+    <!-- <script src="{{ site.baseurl }}/js/jquery.min.js"></script> -->
     <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
     <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="{{ site.baseurl }}/css/theme.css" rel="stylesheet" type="text/css">
