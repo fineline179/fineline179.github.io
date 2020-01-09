@@ -380,7 +380,7 @@ $$
 $$
 
 
-## L LAYERS
+## MULTIPLE LAYERS
 The generalization to an arbitrary number $$L \geq 2$$ of hidden layers is
 straightforward, as all of the relevant calculations were done in the
 single-hidden-layer case.
