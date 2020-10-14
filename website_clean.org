@@ -10,3 +10,6 @@ Working doc for jekyll-clean (dark) mod
 - [ ] width configuration
 
 ** TODO FIX width configuration
+
+* <2020-10-14 Wed>
+After updating site to use mathjax 3, loading time of math rendering is greatly reduced. So not pursuing KaTeX for now.
